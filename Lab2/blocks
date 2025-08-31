@@ -1,0 +1,6 @@
+
+mkdir -p blocks/card
+mkdir -p blocks/content
+
+touch blocks/card/.gitkeep
+touch blocks/content/.gitkeep
