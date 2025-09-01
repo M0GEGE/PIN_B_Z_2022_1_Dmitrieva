@@ -1,3 +1,7 @@
+/**
+ * Локализация для сайта "Путешествия по России"
+ * Объект содержит переводы для двух языков: русский и английский
+ */
 const translations = {
     ru: {
         travelingHeader: "Путешествия по России",
@@ -105,30 +109,46 @@ First of all, because of the mountains: if you drive along the ridge, you will s
     }
 };
 
+// Константы для хранения настроек языка
+const DEFAULT_LANG = 'ru'; // Язык по умолчанию
+const STORAGE_KEY = 'user_lang'; // Ключ для localStorage
 
-const DEFAULT_LANG = 'ru';
-const STORAGE_KEY = 'user_lang';
-
+/**
+ * Основной объект для интернационализации (i18n)
+ * Реализует функционал переключения языков на сайте
+ */
 const i18n = {
-    currentLang: DEFAULT_LANG,
-
+    currentLang: DEFAULT_LANG, // Текущий выбранный язык
+    /**
+     * Инициализация системы локализации
+     * Определяет язык браузера, проверяет сохраненные настройки
+     */
     init() {
-
+        // Пытаемся получить сохраненный язык из localStorage
         const savedLang = localStorage.getItem(STORAGE_KEY);
+        
+        // Определяем язык браузера (первые 2 символа)
         const browserLang = navigator.language.substring(0, 2);
-
+        
+        // Выбираем язык: сохраненный → язык браузера → по умолчанию
         this.currentLang = savedLang ||
             (translations[browserLang] ? browserLang : DEFAULT_LANG);
-
+        // Загружаем выбранный язык
         this.loadLanguage(this.currentLang);
+        // Настраиваем обработчики событий
         this.setupEventListeners();
     },
-
+    /**
+     * Загрузка и применение выбранного языка
+     * @param {string} lang - код языка ('ru' или 'en')
+     */
     loadLanguage(lang) {
+        // Устанавливаем текущий язык
         this.currentLang = lang;
+        // Меняем атрибут lang у html элемента для доступности        
         document.documentElement.lang = lang;
 
-        
+        // Обходим все элементы с атрибутом data-i18n и заменяем текст
         document.querySelectorAll('[data-i18n]').forEach(el => {
             const key = el.getAttribute('data-i18n');
             let text = translations[lang][key];
@@ -136,17 +156,21 @@ const i18n = {
             if (el.dataset.i18nName) {
                 text = text.replace('{name}', el.dataset.i18nName);
             }
-
+            // Заменяем текстовое содержимое элемента
             el.textContent = text;
         });
+        // Сохраняем выбор языка в localStorage для сохранения между сессиями
         localStorage.setItem(STORAGE_KEY, lang);
-
+        // Обновляем активное состояние кнопок переключения языка
         document.querySelectorAll('.header-locale div').forEach(btn => {
             btn.classList.toggle('active', btn.dataset.lang === lang);
         });
     },
-
+     /**
+     * Настройка обработчиков событий для переключения языка
+     */
     setupEventListeners() {
+        // Добавляем обработчики клика на кнопки переключения языка
         document.querySelectorAll('.header-locale div').forEach(btn => {
             btn.addEventListener('click', () => {
                 this.loadLanguage(btn.dataset.lang);
