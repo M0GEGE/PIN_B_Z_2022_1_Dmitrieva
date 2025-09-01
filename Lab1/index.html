@@ -2,31 +2,37 @@
 <html lang="en-US">
 
 <head>
+    <!-- Кодировка документа - UTF-8 для поддержки кириллицы и специальных символов -->
     <meta charset="UTF-8" />
+    <!-- Viewport для корректного отображения на мобильных устройствах -->
     <meta name="viewport" content="width=device-width" />
     <title>Russia</title>
     <link href="css/normalize.css" rel="stylesheet" />
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
+    <!-- Основные стили проекта -->
     <link href="css/style.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/media.css">
 </head>
 
 <body>
+    <!-- Шапка сайта с логотипом и переключателем языка -->
     <header class="header">
         <div class="main__content">
             <a href="#" class="header-logo">
                 <img src="assets/header-logo.svg">
             </a>
-
+            <!-- Блок переключения языка (русский/английский) -->
             <div class="header-locale">
                 <div data-lang="ru" class="active">Ru</div>
                 <div data-lang="en">En</div>
             </div>
         </div>
     </header>
+    <!-- Основное содержимое страницы -->
     <main class="main__container">
+        <!-- Секция с главным заголовком и изображением -->
         <section class="section__block">
             <div class="content">
                 <div class="lead__header">
@@ -80,7 +86,7 @@
                 </div>
             </div>
         </section>
-
+        <!-- Секция с фотоколлажем - сетка изображений -->
         <section class="section__block">
             <div class="main__content">
                 <div class="grid__collage">
@@ -99,12 +105,13 @@
                 </div>
             </div>
         </section>
-
+        <!-- Секция с описанием интересных мест России -->
         <section class="section__block">
             <div class="content">
                 <div class="places__section">
                     <div class="place-block">
                         <div class="place-header">
+                            <!-- Блок места - Куршская коса -->
                             <h2 data-i18n="placeKursKosa"></h2>
                             <div class="place-header__url">
                                 <span>URL</span>
@@ -138,8 +145,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Далее не буду менять текст внутри блоков ибо просто тратит много времени на локализацию -->
 
                     <div class="place-block">
                         <div class="place-header">
@@ -181,7 +186,7 @@
                 </div>
             </div>
         </section>
-
+        <!-- Секция с баннером-обложкой -->
         <section class="section__block">
             <div class="main__content img">
 
@@ -195,7 +200,7 @@
 
             </div>
         </section>
-
+        <!-- Подвал сайта с навигацией и копирайтом -->
         <section class="section__block">
             <div class="main__content">
                 <div class="footer">
@@ -213,6 +218,7 @@
         </section>
 
     </main>
+    <!-- Скрипт для реализации функционала смены языка -->
     <script src="js/locale.js"></script>
 </body>
 
