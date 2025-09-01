@@ -2,6 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
+  <!-- Viewport для адаптивности на мобильных устройствах -->
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -10,10 +11,13 @@
 </head>
 <body class="page">
 <div class="page__content">
+ <!-- Шапка сайта с логотипом -->
   <header class="header page__section">
     <img src="./images/logo.svg" alt="Логотип проекта масто" class="logo header__logo">
   </header>
+ <!-- Основное содержимое страницы -->
   <main class="content">
+ <!-- Секция профиля пользователя -->
     <section class="profile page__section">
       <div class="profile__image" style="background-image: url('./images/avatar.jpg');"></div>
       <div class="profile__info">
@@ -44,6 +48,7 @@
       </div>
     </div>
   </div>
+  <!-- Попап для добавления новой карточки -->
   <div class="popup popup_type_new-card">
     <div class="popup__content">
       <button type="button" class="popup__close"></button>
@@ -55,6 +60,7 @@
       </div>
     </div>
   </div>
+  <!-- Попап для просмотра изображения в полном размере -->
   <div class="popup popup_type_image">
     <div class="popup__content popup__content_content_image">
       <button type="button" class="popup__close"></button>
@@ -63,6 +69,7 @@
     </div>
   </div>
 </div>
+<!-- Подключение JavaScript файлов -->
 <script src="./scripts/cards.js"></script>
 <script src="./scripts/index.js" defer></script>
 
